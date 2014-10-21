@@ -9,9 +9,13 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    let reglageUtilisateurs = NSUserDefaults.standardUserDefaults()
+    var moyenne = 0
+    var nbNotes = 0
+    
     @IBOutlet weak var noteField: UITextField!
     
+    @IBOutlet weak var infoMoyenne: UILabel!
     @IBAction func addNote(sender: AnyObject) {
         if let note = noteField.text.toInt() {
             
@@ -19,9 +23,24 @@ class ViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        var listeNotes:Array<Int> = []
+        
         // Do any additional setup after loading the view, typically from a nib.
     }
-
+    override func viewWillAppear(animated: Bool) {
+        if listNotes = reglageUtilisateurs.valueForKey("listeNote") as Array<Int> {
+            var total = 0
+            nbNotes = listeNotes.count
+            for note in listeNotes {
+                total = total + note
+            }
+            if nbNotes > 0 {
+                moyenne = total/nbNotes
+            }
+        }
+        infoMoyenne.text = "\(nbNotes) Note(s). \(moyenne) de moyenne"
+        
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

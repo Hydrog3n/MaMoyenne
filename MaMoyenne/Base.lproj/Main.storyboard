@@ -63,6 +63,7 @@
                     <navigationItem key="navigationItem" title="Ma moyenne" id="SoX-Nx-fbv"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
+                        <outlet property="infoMoyenne" destination="a21-rn-Kr1" id="Anj-9N-H67"/>
                         <outlet property="noteField" destination="pfm-Jc-ezs" id="upq-22-CNc"/>
                     </connections>
                 </viewController>
