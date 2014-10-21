@@ -22,6 +22,7 @@ class ViewController: UIViewController {
             ajoutNote(listeNotes)
         }
         updateAffichage()
+        saveList()
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +33,7 @@ class ViewController: UIViewController {
             ajoutNote(list)
         }
         updateAffichage()
+        saveList()
         
     }
     override func didReceiveMemoryWarning() {
@@ -39,14 +41,9 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func saveNSUserDefault(value:AnyObject, key:NSString) {
-        var userSettings = NSUserDefaults.standardUserDefaults()
-        userSettings.objectForKey(key)
-        userSettings.synchronize()
-    }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
-        if segue.identifier == "addNote"{
+        if segue.identifier == "afficheListe"{
             let TableVC = segue.destinationViewController as TableViewController
             
         }
@@ -66,6 +63,10 @@ class ViewController: UIViewController {
     }
     func updateAffichage() {
         infoMoyenne.text = "\(nbNotes) Note(s). \(moyenne) de moyenne"
+    }
+    func saveList() {
+        reglageUtilisateurs.setObject(listeNotes, forKey: "listeNote")
+        reglageUtilisateurs.synchronize()
     }
 
 }

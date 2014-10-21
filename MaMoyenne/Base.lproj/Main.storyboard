@@ -29,7 +29,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Fzi-1w-Bds" kind="show" id="D6C-ux-lwA"/>
+                                    <segue destination="Fzi-1w-Bds" kind="show" identifier="afficheListe" id="D6C-ux-lwA"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="750" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pfm-Jc-ezs">
