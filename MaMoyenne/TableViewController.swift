@@ -8,14 +8,23 @@
 
 import UIKit
 
-class TableViewController: UITableViewController {
+class TableViewController: UITableViewController, UIAlertViewDelegate {
 
     @IBAction func ButtonAlert(sender: UIBarButtonItem) {
-        let alertController = UIAlertController(title: "Ajouter une nouvelle note", message:
+        // afficher les message sur l'alert
+        let alert = UIAlertController(title: "Ajouter une nouvelle note", message:
             "", preferredStyle: UIAlertControllerStyle.Alert)
-        alertController.addAction(UIAlertAction(title: "Ajouter", style: UIAlertActionStyle.Default,handler: nil))
+        alert.addAction(UIAlertAction(title: "Annuler", style: UIAlertActionStyle.Default, handler: nil))
+        alert.addTextFieldWithConfigurationHandler({(textField: UITextField!) in
+            textField.placeholder = "Note"
+            textField.secureTextEntry = false
+        })
         
-        self.presentViewController(alertController, animated: true, completion: nil)
+        // bouton ajouter dans l'alert
+        alert.addAction(UIAlertAction(title: "Ajouter", style: UIAlertActionStyle.Default,handler: nil))
+        
+        self.presentViewController(alert, animated: true, completion: nil)
+        
     }
     override func viewDidLoad() {
         super.viewDidLoad()
