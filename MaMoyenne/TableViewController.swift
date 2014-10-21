@@ -10,6 +10,13 @@ import UIKit
 
 class TableViewController: UITableViewController {
 
+    @IBAction func ButtonAlert(sender: UIBarButtonItem) {
+        let alertController = UIAlertController(title: "Ajouter une nouvelle note", message:
+            "", preferredStyle: UIAlertControllerStyle.Alert)
+        alertController.addAction(UIAlertAction(title: "Ajouter", style: UIAlertActionStyle.Default,handler: nil))
+        
+        self.presentViewController(alertController, animated: true, completion: nil)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
