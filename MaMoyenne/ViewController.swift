@@ -19,18 +19,18 @@ class ViewController: UIViewController, UIAlertViewDelegate {
     @IBAction func addNote(sender: UIButton) {
         
         if let note = noteField.text.toInt() {
-        if (note <= 20 && note >= 0){
-            listeNotes.append(note)
-            ajoutNote(listeNotes)
-            updateAffichage()
-            saveList()
-        }
-        
-        else {
-            // afficher les message sur l'alert
-            var alert : UIAlertView = UIAlertView(title: "Votre note est Invalide !", message: "Comprise entre 0 et 20",       delegate: nil, cancelButtonTitle: "OK")
-            alert.show()
-        }
+            if (note <= 20 && note >= 0){
+                listeNotes.append(note)
+                ajoutNote(listeNotes)
+                updateAffichage()
+                saveList()
+            }
+                
+            else {
+                // afficher les message sur l'alert
+                var alert : UIAlertView = UIAlertView(title: "Votre note est Invalide !", message: "Comprise entre 0 et 20",       delegate: nil, cancelButtonTitle: "OK")
+                alert.show()
+            }
         }
         noteField.text = ""
         noteField.resignFirstResponder()
@@ -60,7 +60,7 @@ class ViewController: UIViewController, UIAlertViewDelegate {
         }
     }
     
-       func ajoutNote(list : Array<Int>) {
+    func ajoutNote(list : Array<Int>) {
         listeNotes = list
         var total = 0
         nbNotes = listeNotes.count
