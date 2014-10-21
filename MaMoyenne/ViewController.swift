@@ -23,12 +23,10 @@ class ViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        var listeNotes:Array<Int> = []
-        
         // Do any additional setup after loading the view, typically from a nib.
     }
     override func viewWillAppear(animated: Bool) {
-        if listNotes = reglageUtilisateurs.valueForKey("listeNote") as Array<Int> {
+        if var listeNotes = reglageUtilisateurs.valueForKey("listeNote") as? Array<Int> {
             var total = 0
             nbNotes = listeNotes.count
             for note in listeNotes {
