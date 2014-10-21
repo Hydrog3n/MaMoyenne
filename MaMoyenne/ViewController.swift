@@ -12,31 +12,26 @@ class ViewController: UIViewController {
     let reglageUtilisateurs = NSUserDefaults.standardUserDefaults()
     var moyenne = 0
     var nbNotes = 0
-    
+    var listeNotes:Array<Int> = []
     @IBOutlet weak var noteField: UITextField!
     
     @IBOutlet weak var infoMoyenne: UILabel!
     @IBAction func addNote(sender: AnyObject) {
         if let note = noteField.text.toInt() {
-            
+            listeNotes.append(note)
+            ajoutNote(listeNotes)
         }
+        updateAffichage()
     }
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
     override func viewWillAppear(animated: Bool) {
-        if var listeNotes = reglageUtilisateurs.valueForKey("listeNote") as? Array<Int> {
-            var total = 0
-            nbNotes = listeNotes.count
-            for note in listeNotes {
-                total = total + note
-            }
-            if nbNotes > 0 {
-                moyenne = total/nbNotes
-            }
+        if var list:Array<Int> = reglageUtilisateurs.valueForKey("listeNote") as? Array<Int> {
+            ajoutNote(list)
         }
-        infoMoyenne.text = "\(nbNotes) Note(s). \(moyenne) de moyenne"
+        updateAffichage()
         
     }
     override func didReceiveMemoryWarning() {
@@ -56,7 +51,22 @@ class ViewController: UIViewController {
             
         }
     }
-
+    
+    func ajoutNote(list : Array<Int>) {
+        listeNotes = list
+        var total = 0
+        nbNotes = listeNotes.count
+        for note in listeNotes {
+            total = total + note
+        }
+        if nbNotes > 0 {
+            moyenne = total/nbNotes
+        }
+        
+    }
+    func updateAffichage() {
+        infoMoyenne.text = "\(nbNotes) Note(s). \(moyenne) de moyenne"
+    }
 
 }
 

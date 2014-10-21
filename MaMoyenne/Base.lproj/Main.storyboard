@@ -93,7 +93,7 @@
                         </connections>
                     </tableView>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="HFH-kK-5Wv">
+                    <navigationItem key="navigationItem" title="Liste des notes " id="HFH-kK-5Wv">
                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="Ztw-Be-qw8">
                             <connections>
                                 <action selector="ButtonAlert:" destination="Fzi-1w-Bds" id="IA9-cG-MqY"/>
