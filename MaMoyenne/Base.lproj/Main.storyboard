@@ -91,10 +91,7 @@
                             <outlet property="delegate" destination="Fzi-1w-Bds" id="Tov-Rb-Wcr"/>
                         </connections>
                     </tableView>
-                    <toolbarItems>
-                        <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="kxf-in-B9k"/>
-                        <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="fGk-OJ-vfQ"/>
-                    </toolbarItems>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" title="Root View Controller" id="HFH-kK-5Wv">
                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="Ztw-Be-qw8">
                             <connections>
