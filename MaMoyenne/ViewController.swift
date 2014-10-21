@@ -13,7 +13,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var noteField: UITextField!
     
     @IBAction func addNote(sender: AnyObject) {
-        if !noteField.text.isEmpty {
+        if let note = noteField.text.toInt() {
             
         }
     }
@@ -33,13 +33,12 @@ class ViewController: UIViewController {
         userSettings.synchronize()
     }
     
-//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
-//        if segue.identifier == "mySegue"{
-//            let vc = segue.destinationViewController as TableViewController
-//            vc.colorString = colorLabel.text
-//            vc.delegate = self
-//        }
-//    }
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        if segue.identifier == "addNote"{
+            let TableVC = segue.destinationViewController as TableViewController
+            
+        }
+    }
 
 
 }
