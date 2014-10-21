@@ -15,11 +15,11 @@ class TableViewController: UITableViewController, UIAlertViewDelegate {
         let alert = UIAlertController(title: "Ajouter une nouvelle note", message:
             "", preferredStyle: UIAlertControllerStyle.Alert)
         alert.addAction(UIAlertAction(title: "Annuler", style: UIAlertActionStyle.Default, handler: nil))
+        // demande la note en champ de text
         alert.addTextFieldWithConfigurationHandler({(textField: UITextField!) in
             textField.placeholder = "Note"
             textField.secureTextEntry = false
         })
-        
         // bouton ajouter dans l'alert
         alert.addAction(UIAlertAction(title: "Ajouter", style: UIAlertActionStyle.Default,handler: nil))
         
