@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>66D4E5FE-556C-4E87-93B9-E78CF3D6C53F</string>
+	<key>IDESourceControlProjectName</key>
+	<string>MaMoyenne</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>E48B5FB99DB5E0F24BFC9A4300B6D550F515277C</key>
+		<string>https://github.com/Hydrog3n/MaMoyenne.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>MaMoyenne.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>E48B5FB99DB5E0F24BFC9A4300B6D550F515277C</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/Hydrog3n/MaMoyenne.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>E48B5FB99DB5E0F24BFC9A4300B6D550F515277C</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>E48B5FB99DB5E0F24BFC9A4300B6D550F515277C</string>
+			<key>IDESourceControlWCCName</key>
+			<string>MaMoyenne</string>
+		</dict>
+	</array>
+</dict>
+</plist>
