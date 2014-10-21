@@ -29,7 +29,8 @@ class ViewController: UIViewController, UIAlertViewDelegate {
             var alert : UIAlertView = UIAlertView(title: "Votre note est Invalide !", message: "Comprise entre 0 et 20",       delegate: nil, cancelButtonTitle: "OK")
             alert.show()
         }
-        
+        noteField.text = ""
+        noteField.resignFirstResponder()
     }
     override func viewDidLoad() {
         super.viewDidLoad()
