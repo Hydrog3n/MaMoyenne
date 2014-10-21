@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UIAlertViewDelegate {
     let reglageUtilisateurs = NSUserDefaults.standardUserDefaults()
     var moyenne = 0
     var nbNotes = 0
@@ -16,13 +16,24 @@ class ViewController: UIViewController {
     @IBOutlet weak var noteField: UITextField!
     
     @IBOutlet weak var infoMoyenne: UILabel!
-    @IBAction func addNote(sender: AnyObject) {
+    @IBAction func addNote(sender: UIButton) {
+        
         if let note = noteField.text.toInt() {
+        if (note <= 20 && note >= 0){
             listeNotes.append(note)
             ajoutNote(listeNotes)
+            updateAffichage()
+            saveList()
         }
-        updateAffichage()
-        saveList()
+        
+        else {
+            // afficher les message sur l'alert
+            var alert : UIAlertView = UIAlertView(title: "Votre note est Invalide !", message: "Comprise entre 0 et 20",       delegate: nil, cancelButtonTitle: "OK")
+            alert.show()
+        }
+        }
+        noteField.text = ""
+        noteField.resignFirstResponder()
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,7 +60,7 @@ class ViewController: UIViewController {
         }
     }
     
-    func ajoutNote(list : Array<Int>) {
+       func ajoutNote(list : Array<Int>) {
         listeNotes = list
         var total = 0
         nbNotes = listeNotes.count
@@ -68,6 +79,6 @@ class ViewController: UIViewController {
         reglageUtilisateurs.setObject(listeNotes, forKey: "listeNote")
         reglageUtilisateurs.synchronize()
     }
-
+    
 }
 
