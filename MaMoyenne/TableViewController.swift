@@ -24,8 +24,11 @@ class TableViewController: UITableViewController, UIAlertViewDelegate {
         alert.addAction(UIAlertAction(title: "Ajouter", style: UIAlertActionStyle.Default,handler: nil))
         
         self.presentViewController(alert, animated: true, completion: nil)
+      
         
     }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
