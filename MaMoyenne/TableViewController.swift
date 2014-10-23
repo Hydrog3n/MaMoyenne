@@ -58,7 +58,9 @@ class TableViewController: UITableViewController, UIAlertViewDelegate {
         return listeNotes.count
     }
 
-    
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "Section"
+    }
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("notes", forIndexPath: indexPath) as UITableViewCell
         cell.textLabel.text = "\(listeNotes[indexPath.row])/20"

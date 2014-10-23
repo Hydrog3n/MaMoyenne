@@ -49,22 +49,32 @@
                                     <action selector="addNote:" destination="bXu-bP-BAR" eventType="touchUpInside" id="VOm-P1-mNd"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Matière" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="p3Z-n1-HBK">
+                                <rect key="frame" x="16" y="177" width="167" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="p3Z-n1-HBK" firstAttribute="top" secondItem="pfm-Jc-ezs" secondAttribute="bottom" constant="8" symbolic="YES" id="2T5-vL-kOd"/>
                             <constraint firstItem="KdL-d8-Te2" firstAttribute="top" secondItem="a21-rn-Kr1" secondAttribute="bottom" constant="8" symbolic="YES" id="6dL-Si-Yqt"/>
+                            <constraint firstItem="p3Z-n1-HBK" firstAttribute="width" secondItem="pfm-Jc-ezs" secondAttribute="width" id="9Rg-SK-xIT"/>
                             <constraint firstItem="pfm-Jc-ezs" firstAttribute="top" secondItem="EXF-hN-Sl2" secondAttribute="top" id="CYF-59-w0T"/>
                             <constraint firstItem="a21-rn-Kr1" firstAttribute="centerX" secondItem="KdL-d8-Te2" secondAttribute="centerX" id="JQd-9l-Yq9"/>
                             <constraint firstItem="pfm-Jc-ezs" firstAttribute="top" secondItem="KdL-d8-Te2" secondAttribute="bottom" constant="8" symbolic="YES" id="NXG-sG-DAN"/>
+                            <constraint firstItem="p3Z-n1-HBK" firstAttribute="leading" secondItem="bFL-WJ-Gjm" secondAttribute="leadingMargin" id="SE7-6L-r8a"/>
                             <constraint firstItem="EXF-hN-Sl2" firstAttribute="trailing" secondItem="bFL-WJ-Gjm" secondAttribute="trailingMargin" id="cDh-hu-Mdf"/>
                             <constraint firstItem="a21-rn-Kr1" firstAttribute="top" secondItem="59U-g2-chi" secondAttribute="bottom" constant="8" symbolic="YES" id="lZn-z7-D8W"/>
                             <constraint firstItem="EXF-hN-Sl2" firstAttribute="leading" secondItem="pfm-Jc-ezs" secondAttribute="trailing" constant="8" symbolic="YES" id="lsy-gN-DWP"/>
                             <constraint firstItem="pfm-Jc-ezs" firstAttribute="leading" secondItem="bFL-WJ-Gjm" secondAttribute="leadingMargin" id="nRp-u0-fCo"/>
+                            <constraint firstItem="p3Z-n1-HBK" firstAttribute="height" secondItem="pfm-Jc-ezs" secondAttribute="height" id="q7i-6Q-bdv"/>
                             <constraint firstItem="a21-rn-Kr1" firstAttribute="centerX" secondItem="bFL-WJ-Gjm" secondAttribute="centerX" id="tLf-y9-80N"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Ma moyenne" id="SoX-Nx-fbv"/>
                     <connections>
+                        <outlet property="MatiereNote" destination="p3Z-n1-HBK" id="mqm-CA-JJn"/>
                         <outlet property="infoMoyenne" destination="a21-rn-Kr1" id="Anj-9N-H67"/>
                         <outlet property="noteField" destination="pfm-Jc-ezs" id="upq-22-CNc"/>
                     </connections>
