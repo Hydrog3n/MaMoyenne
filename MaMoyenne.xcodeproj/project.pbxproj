@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		EB27FDE219F5912D00260986 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB27FDE119F5912D00260986 /* TableViewController.swift */; };
-		EB27FDE419F5916900260986 /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB27FDE319F5916900260986 /* NavigationViewController.swift */; };
 		EB40A5B519F43D36007E9CB4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB40A5B419F43D36007E9CB4 /* AppDelegate.swift */; };
 		EB40A5B719F43D36007E9CB4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB40A5B619F43D36007E9CB4 /* ViewController.swift */; };
 		EB40A5BA19F43D36007E9CB4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB40A5B819F43D36007E9CB4 /* Main.storyboard */; };
@@ -29,7 +28,6 @@
 
 /* Begin PBXFileReference section */
 		EB27FDE119F5912D00260986 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
-		EB27FDE319F5916900260986 /* NavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationViewController.swift; sourceTree = "<group>"; };
 		EB40A5AF19F43D36007E9CB4 /* MaMoyenne.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MaMoyenne.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB40A5B319F43D36007E9CB4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EB40A5B419F43D36007E9CB4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -88,7 +86,6 @@
 				EB40A5BD19F43D36007E9CB4 /* LaunchScreen.xib */,
 				EB40A5B219F43D36007E9CB4 /* Supporting Files */,
 				EB27FDE119F5912D00260986 /* TableViewController.swift */,
-				EB27FDE319F5916900260986 /* NavigationViewController.swift */,
 			);
 			path = MaMoyenne;
 			sourceTree = "<group>";
@@ -218,7 +215,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EB27FDE419F5916900260986 /* NavigationViewController.swift in Sources */,
 				EB40A5B719F43D36007E9CB4 /* ViewController.swift in Sources */,
 				EB27FDE219F5912D00260986 /* TableViewController.swift in Sources */,
 				EB40A5B519F43D36007E9CB4 /* AppDelegate.swift in Sources */,

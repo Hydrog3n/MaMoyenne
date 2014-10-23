@@ -9,23 +9,24 @@
 import UIKit
 
 class TableViewController: UITableViewController, UIAlertViewDelegate {
-     var listeNotes:Array<Int> = [10,12]
+    
+    var listeNotes:Array<Int> = []
+    var listeMatieres:Array<NSString> = []
     @IBAction func ButtonAlert(sender: UIBarButtonItem) {
         // afficher les message sur l'alert
-        let alert = UIAlertController(title: "Ajouter une nouvelle note", message:
-            "", preferredStyle: UIAlertControllerStyle.Alert)
+        let alert = UIAlertController(title: "Ajouter une nouvelle note", message:"", preferredStyle: UIAlertControllerStyle.Alert)
+        //ajout bouton annuler
         alert.addAction(UIAlertAction(title: "Annuler", style: UIAlertActionStyle.Default, handler: nil))
-        // demande la note en champ de text
+        // bouton ajouter dans l'alert
+        alert.addAction(UIAlertAction(title: "Ajouter", style: UIAlertActionStyle.Default,handler: nil))
+        
+        // ajout d'un champs text
         alert.addTextFieldWithConfigurationHandler({(textField: UITextField!) in
             textField.placeholder = "Note"
             textField.secureTextEntry = false
         })
-        // bouton ajouter dans l'alert
-        alert.addAction(UIAlertAction(title: "Ajouter", style: UIAlertActionStyle.Default,handler: nil))
         
         self.presentViewController(alert, animated: true, completion: nil)
-      
-        
     }
     
     
@@ -38,6 +39,9 @@ class TableViewController: UITableViewController, UIAlertViewDelegate {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
+    override func viewWillAppear(animated: Bool) {
+        
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -47,10 +51,19 @@ class TableViewController: UITableViewController, UIAlertViewDelegate {
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Potentially incomplete method implementation.
-        // Return the number of sections.
-        return 1
-    }
+        var section = 0
+        for matiere in listeMatieres {
+            var occ = 0
+            for mat in listeMatieres {
+                if (mat.isEqualToString(mat)) {
+                    occ++
+                    if occ == 2 {
+                        section++
+                    }
+                }
+            }
+        }
+        return 1    }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
@@ -59,6 +72,9 @@ class TableViewController: UITableViewController, UIAlertViewDelegate {
     }
 
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        for (index,value) in enumerate(listeMatieres) {
+            return listeMatieres[index]
+        }
         return "Section"
     }
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

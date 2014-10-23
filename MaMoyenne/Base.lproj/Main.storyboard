@@ -54,6 +54,15 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8aN-jT-3sf">
+                                <rect key="frame" x="224" y="177" width="46" height="30"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="removeAllNote:" destination="bXu-bP-BAR" eventType="touchUpInside" id="QWA-jC-gv6"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -74,8 +83,8 @@
                     </view>
                     <navigationItem key="navigationItem" title="Ma moyenne" id="SoX-Nx-fbv"/>
                     <connections>
-                        <outlet property="MatiereNote" destination="p3Z-n1-HBK" id="mqm-CA-JJn"/>
                         <outlet property="infoMoyenne" destination="a21-rn-Kr1" id="Anj-9N-H67"/>
+                        <outlet property="matiereField" destination="p3Z-n1-HBK" id="R6b-pc-ROc"/>
                         <outlet property="noteField" destination="pfm-Jc-ezs" id="upq-22-CNc"/>
                     </connections>
                 </viewController>
