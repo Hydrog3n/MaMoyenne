@@ -55,8 +55,9 @@ class ViewController: UIViewController, UIAlertViewDelegate {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         if segue.identifier == "afficheListe"{
-            let TableVC = segue.destinationViewController as TableViewController
-            
+            var TableVC = segue.destinationViewController as TableViewController
+            TableVC.listeNotes = listeNotes
+            println(TableVC.listeNotes)
         }
     }
     

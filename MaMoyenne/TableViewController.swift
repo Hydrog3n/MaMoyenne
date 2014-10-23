@@ -9,7 +9,7 @@
 import UIKit
 
 class TableViewController: UITableViewController, UIAlertViewDelegate {
-
+     var listeNotes:Array<Int> = [10,12]
     @IBAction func ButtonAlert(sender: UIBarButtonItem) {
         // afficher les message sur l'alert
         let alert = UIAlertController(title: "Ajouter une nouvelle note", message:
@@ -31,7 +31,7 @@ class TableViewController: UITableViewController, UIAlertViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -49,24 +49,22 @@ class TableViewController: UITableViewController, UIAlertViewDelegate {
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Potentially incomplete method implementation.
         // Return the number of sections.
-        return 0
+        return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        return 0
+        return listeNotes.count
     }
 
-    /*
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as UITableViewCell
-
-        // Configure the cell...
-
+        let cell = tableView.dequeueReusableCellWithIdentifier("notes", forIndexPath: indexPath) as UITableViewCell
+        cell.textLabel.text = "\(listeNotes[indexPath.row])/20"
         return cell
     }
-    */
+
 
     /*
     // Override to support conditional editing of the table view.
@@ -84,9 +82,11 @@ class TableViewController: UITableViewController, UIAlertViewDelegate {
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         } else if editingStyle == .Insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+            
         }    
     }
     */
+
 
     /*
     // Override to support rearranging the table view.
