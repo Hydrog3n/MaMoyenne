@@ -9,6 +9,7 @@
 import UIKit
 
 class ViewController: UIViewController, UIAlertViewDelegate {
+
     //Variables de la classe
     let reglageUtilisateurs = NSUserDefaults.standardUserDefaults()
     var moyenne = 0
