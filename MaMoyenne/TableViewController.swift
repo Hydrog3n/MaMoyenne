@@ -12,14 +12,19 @@ class TableViewController: UITableViewController, UIAlertViewDelegate {
     
     var listeNotes:Array<Int> = []
     var listeMatieres:Array<NSString> = []
+    
     @IBAction func ButtonAlert(sender: UIBarButtonItem) {
         // afficher les message sur l'alert
         let alert = UIAlertController(title: "Ajouter une nouvelle note", message:"", preferredStyle: UIAlertControllerStyle.Alert)
         //ajout bouton annuler
         alert.addAction(UIAlertAction(title: "Annuler", style: UIAlertActionStyle.Default, handler: nil))
         // bouton ajouter dans l'alert
-        alert.addAction(UIAlertAction(title: "Ajouter", style: UIAlertActionStyle.Default,handler: nil))
-        
+        let AddAction = UIAlertAction(title: "Ajouter", style: UIAlertActionStyle.Default) { (action) in
+            let note = alert.textFields![0] as UITextField
+            println(note.text)
+        }
+        alert.addAction(AddAction)
+    
         // ajout d'un champs text
         alert.addTextFieldWithConfigurationHandler({(textField: UITextField!) in
             textField.placeholder = "Note"

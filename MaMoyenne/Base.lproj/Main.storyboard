@@ -127,10 +127,10 @@
             </objects>
             <point key="canvasLocation" x="616" y="-268"/>
         </scene>
-        <!--Navigation View Controller-->
+        <!--Navigation Controller-->
         <scene sceneID="wGn-hW-GlD">
             <objects>
-                <navigationController id="KLX-p6-lX6" customClass="NavigationViewController" customModule="MaMoyenne" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController id="KLX-p6-lX6" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="fRp-Xd-A6c">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
