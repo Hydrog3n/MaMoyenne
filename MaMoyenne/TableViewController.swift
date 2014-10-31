@@ -20,12 +20,10 @@ class TableViewController: UITableViewController, UIAlertViewDelegate {
         alert.addAction(UIAlertAction(title: "Annuler", style: UIAlertActionStyle.Default, handler: nil))
         // bouton ajouter dans l'alert
         let AddAction = UIAlertAction(title: "Ajouter", style: UIAlertActionStyle.Default) { (action) in
-            let note = alert.textFields![0] as UITextField
-            println(note.text.toInt())
-            if let note = note.text.toInt(){
-                
-            self.listeNotes.append(note)
-                
+            let noteField = alert.textFields![0] as UITextField
+            if let note = noteField.text.toInt() {
+                self.listeNotes.append(note)
+                self.tableView.reloadData()
             }
         }
         alert.addAction(AddAction)
