@@ -13,7 +13,7 @@ class ViewController: UIViewController, UIAlertViewDelegate {
     //Variables de la classe
     let reglageUtilisateurs = NSUserDefaults.standardUserDefaults()
     var moyenne = 0
-    var listeNotes = [String: Array<Int>]()
+    var listeNotes = [NSString: Array<Int>]()
     var listeMatieres:Array<NSString> = ["Vide"]
     
     //Variables du design
@@ -59,7 +59,7 @@ class ViewController: UIViewController, UIAlertViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if var list = reglageUtilisateurs.valueForKey("listeNotes") as? Dictionary<String,Array<Int>> {
+        if var list = reglageUtilisateurs.valueForKey("listeNotes") as? Dictionary<NSString,Array<Int>> {
             listeNotes = list
             calculMoyenne()
         }
