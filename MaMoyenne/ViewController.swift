@@ -25,7 +25,7 @@ class ViewController: UIViewController, UIAlertViewDelegate {
     @IBAction func removeAllNote(sender: UIButton) {
         listeMatieres.removeAll(keepCapacity: false)
         listeNotes.removeAll(keepCapacity: false)
-        saveList("listeNote")
+        saveList("listeNotes")
         saveList("listeMatieres")
         calculMoyenne()
         updateAffichage()
@@ -40,7 +40,7 @@ class ViewController: UIViewController, UIAlertViewDelegate {
                     //Ajout de la note dans la liste, mise à jour de l'affichage et sauvegarde de la liste
                     ajoutNote(note)
                     updateAffichage()
-                    saveList("listeNote")
+                    saveList("listeNotes")
                     //Ajout de la matiere dans la liste et sauvegarde de la liste
                     ajoutMatiere(matiereField.text)
                     saveList("listeMatieres")
@@ -67,7 +67,7 @@ class ViewController: UIViewController, UIAlertViewDelegate {
         super.viewWillAppear(animated)
         //Reccuptération de la liste de note dans la sauvegarde
         //Remplisage du tableau et mise à jour de la moyenne
-        if var list:Array<Int> = reglageUtilisateurs.valueForKey("listeNote") as? Array<Int> {
+        if var list:Array<Int> = reglageUtilisateurs.valueForKey("listeNotes") as? Array<Int> {
             listeNotes = list
             calculMoyenne()
         }
@@ -84,9 +84,10 @@ class ViewController: UIViewController, UIAlertViewDelegate {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         if segue.identifier == "afficheListe"{
             var TableVC = segue.destinationViewController as TableViewController
-            TableVC.listeNotes = listeNotes
+//            TableVC.listeNotes = listeNotes
             TableVC.listeMatieres = listeMatieres
             //println(TableVC.listeNotes)
+            TableVC.viewC = self
         }
     }
     
