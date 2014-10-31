@@ -10,8 +10,9 @@ import UIKit
 
 class TableViewController: UITableViewController, UIAlertViewDelegate {
     
-    var listeNotes:Array<Int> = []
+    //var listeNotes:Array<Int> = []
     var listeMatieres:Array<NSString> = []
+    var viewC = ViewController ()
     
     @IBAction func ButtonAlert(sender: UIBarButtonItem) {
         // afficher les message sur l'alert
@@ -22,8 +23,10 @@ class TableViewController: UITableViewController, UIAlertViewDelegate {
         let AddAction = UIAlertAction(title: "Ajouter", style: UIAlertActionStyle.Default) { (action) in
             let noteField = alert.textFields![0] as UITextField
             if let note = noteField.text.toInt() {
-                self.listeNotes.append(note)
+//                self.listeNotes.append(note)
+                self.viewC.ajoutNote(note)
                 self.tableView.reloadData()
+                self.viewC.saveList("listeNotes")
             }
         }
         alert.addAction(AddAction)
@@ -76,7 +79,7 @@ class TableViewController: UITableViewController, UIAlertViewDelegate {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        return listeNotes.count
+        return self.viewC.listeNotes.count
     }
 
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -87,7 +90,7 @@ class TableViewController: UITableViewController, UIAlertViewDelegate {
     }
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("notes", forIndexPath: indexPath) as UITableViewCell
-        cell.textLabel.text = "\(listeNotes[indexPath.row])/20"
+        cell.textLabel.text = "\(self.viewC.listeNotes[indexPath.row])/20"
         return cell
     }
 
