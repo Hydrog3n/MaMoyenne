@@ -21,7 +21,12 @@ class TableViewController: UITableViewController, UIAlertViewDelegate {
         // bouton ajouter dans l'alert
         let AddAction = UIAlertAction(title: "Ajouter", style: UIAlertActionStyle.Default) { (action) in
             let note = alert.textFields![0] as UITextField
-            println(note.text)
+            println(note.text.toInt())
+            if let note = note.text.toInt(){
+                
+            self.listeNotes.append(note)
+                
+            }
         }
         alert.addAction(AddAction)
     
@@ -32,8 +37,8 @@ class TableViewController: UITableViewController, UIAlertViewDelegate {
         })
         
         self.presentViewController(alert, animated: true, completion: nil)
+       
     }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
