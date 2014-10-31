@@ -54,9 +54,10 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8aN-jT-3sf">
-                                <rect key="frame" x="224" y="177" width="46" height="30"/>
-                                <state key="normal" title="Button">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8aN-jT-3sf">
+                                <rect key="frame" x="210" y="177" width="74" height="30"/>
+                                <state key="normal" title="Reinitialise">
+                                    <color key="titleColor" red="1" green="0.15042889879999999" blue="0.14872498179999999" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -66,17 +67,21 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="8aN-jT-3sf" firstAttribute="top" secondItem="EXF-hN-Sl2" secondAttribute="bottom" constant="8" id="1xo-gP-YHW"/>
                             <constraint firstItem="p3Z-n1-HBK" firstAttribute="top" secondItem="pfm-Jc-ezs" secondAttribute="bottom" constant="8" symbolic="YES" id="2T5-vL-kOd"/>
                             <constraint firstItem="KdL-d8-Te2" firstAttribute="top" secondItem="a21-rn-Kr1" secondAttribute="bottom" constant="8" symbolic="YES" id="6dL-Si-Yqt"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="8aN-jT-3sf" secondAttribute="trailing" constant="20" id="6og-GN-yo7"/>
                             <constraint firstItem="p3Z-n1-HBK" firstAttribute="width" secondItem="pfm-Jc-ezs" secondAttribute="width" id="9Rg-SK-xIT"/>
                             <constraint firstItem="pfm-Jc-ezs" firstAttribute="top" secondItem="EXF-hN-Sl2" secondAttribute="top" id="CYF-59-w0T"/>
                             <constraint firstItem="a21-rn-Kr1" firstAttribute="centerX" secondItem="KdL-d8-Te2" secondAttribute="centerX" id="JQd-9l-Yq9"/>
                             <constraint firstItem="pfm-Jc-ezs" firstAttribute="top" secondItem="KdL-d8-Te2" secondAttribute="bottom" constant="8" symbolic="YES" id="NXG-sG-DAN"/>
                             <constraint firstItem="p3Z-n1-HBK" firstAttribute="leading" secondItem="bFL-WJ-Gjm" secondAttribute="leadingMargin" id="SE7-6L-r8a"/>
                             <constraint firstItem="EXF-hN-Sl2" firstAttribute="trailing" secondItem="bFL-WJ-Gjm" secondAttribute="trailingMargin" id="cDh-hu-Mdf"/>
+                            <constraint firstItem="8aN-jT-3sf" firstAttribute="top" secondItem="EXF-hN-Sl2" secondAttribute="bottom" constant="8" id="cJE-OE-5UB"/>
                             <constraint firstItem="a21-rn-Kr1" firstAttribute="top" secondItem="59U-g2-chi" secondAttribute="bottom" constant="8" symbolic="YES" id="lZn-z7-D8W"/>
                             <constraint firstItem="EXF-hN-Sl2" firstAttribute="leading" secondItem="pfm-Jc-ezs" secondAttribute="trailing" constant="8" symbolic="YES" id="lsy-gN-DWP"/>
                             <constraint firstItem="pfm-Jc-ezs" firstAttribute="leading" secondItem="bFL-WJ-Gjm" secondAttribute="leadingMargin" id="nRp-u0-fCo"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="8aN-jT-3sf" secondAttribute="trailing" constant="34" id="neL-d7-yyK"/>
                             <constraint firstItem="p3Z-n1-HBK" firstAttribute="height" secondItem="pfm-Jc-ezs" secondAttribute="height" id="q7i-6Q-bdv"/>
                             <constraint firstItem="a21-rn-Kr1" firstAttribute="centerX" secondItem="bFL-WJ-Gjm" secondAttribute="centerX" id="tLf-y9-80N"/>
                         </constraints>
@@ -90,7 +95,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YbH-t6-b4a" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="64" y="-268"/>
+            <point key="canvasLocation" x="-76" y="-236"/>
         </scene>
         <!--Liste des Notes-->
         <scene sceneID="8q4-bT-m2K">
