@@ -11,7 +11,7 @@ import UIKit
 class TableViewController: UITableViewController, UIAlertViewDelegate {
     
     //var listeNotes:Array<Int> = []
-    var listeMatieres:Array<NSString> = []
+//    var listeMatieres:Array<NSString> = ["":[]]
     var viewC = ViewController ()
     
     @IBAction func ButtonAlert(sender: UIBarButtonItem) {
@@ -22,9 +22,10 @@ class TableViewController: UITableViewController, UIAlertViewDelegate {
         // bouton ajouter dans l'alert
         let AddAction = UIAlertAction(title: "Ajouter", style: UIAlertActionStyle.Default) { (action) in
             let noteField = alert.textFields![0] as UITextField
+            let matiereField = alert.textFields![1] as UITextField
             if let note = noteField.text.toInt() {
 //                self.listeNotes.append(note)
-                self.viewC.ajoutNote(note)
+                self.viewC.ajoutNote(note, matiere:matiereField.text)
                 self.tableView.reloadData()
                 self.viewC.saveList("listeNotes")
             }
@@ -36,7 +37,10 @@ class TableViewController: UITableViewController, UIAlertViewDelegate {
             textField.placeholder = "Note"
             textField.secureTextEntry = false
         })
-        
+        alert.addTextFieldWithConfigurationHandler({(textField: UITextField!) in
+            textField.placeholder = "Matiere"
+            textField.secureTextEntry = false
+        })
         self.presentViewController(alert, animated: true, completion: nil)
        
     }
@@ -63,18 +67,8 @@ class TableViewController: UITableViewController, UIAlertViewDelegate {
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         var section = 0
-        for matiere in listeMatieres {
-            var occ = 0
-            for mat in listeMatieres {
-                if (mat.isEqualToString(mat)) {
-                    occ++
-                    if occ == 2 {
-                        section++
-                    }
-                }
-            }
-        }
-        return 1    }
+        return 1
+    }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
@@ -83,14 +77,12 @@ class TableViewController: UITableViewController, UIAlertViewDelegate {
     }
 
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        for (index,value) in enumerate(listeMatieres) {
-            return listeMatieres[index]
-        }
         return "Section"
     }
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let sectionName = "Math"
         let cell = tableView.dequeueReusableCellWithIdentifier("notes", forIndexPath: indexPath) as UITableViewCell
-        cell.textLabel.text = "\(self.viewC.listeNotes[indexPath.row])/20"
+        cell.textLabel.text = "\(self.viewC.listeNotes[sectionName])/20"
         return cell
     }
 

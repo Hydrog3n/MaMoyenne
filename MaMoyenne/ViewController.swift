@@ -13,7 +13,7 @@ class ViewController: UIViewController, UIAlertViewDelegate {
     //Variables de la classe
     let reglageUtilisateurs = NSUserDefaults.standardUserDefaults()
     var moyenne = 0
-    var listeNotes:Array<Int> = []
+    var listeNotes = [String: Array<Int>]()
     var listeMatieres:Array<NSString> = ["Vide"]
     
     //Variables du design
@@ -38,12 +38,10 @@ class ViewController: UIViewController, UIAlertViewDelegate {
                 //On verifie que ce soit entre 0 et 20
                 if (note <= 20 && note >= 0){
                     //Ajout de la note dans la liste, mise à jour de l'affichage et sauvegarde de la liste
-                    ajoutNote(note)
+                    ajoutNote(note, matiere:matiereField.text)
                     updateAffichage()
                     saveList("listeNotes")
-                    //Ajout de la matiere dans la liste et sauvegarde de la liste
-                    ajoutMatiere(matiereField.text)
-                    saveList("listeMatieres")
+                    //saveList("listeMatieres")
                 }
                 else {
                     // afficher les message sur l'alert
@@ -61,18 +59,19 @@ class ViewController: UIViewController, UIAlertViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if var list = reglageUtilisateurs.valueForKey("listeNotes") as? Dictionary<String,Array<Int>> {
+            listeNotes = list
+            calculMoyenne()
+        }
+        //Mise a jour de l'affichage du nb de note de la moyenne sur le label
+        updateAffichage()
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         //Reccuptération de la liste de note dans la sauvegarde
         //Remplisage du tableau et mise à jour de la moyenne
-        if var list:Array<Int> = reglageUtilisateurs.valueForKey("listeNotes") as? Array<Int> {
-            listeNotes = list
-            calculMoyenne()
-        }
-        //Mise a jour de l'affichage du nb de note de la moyenne sur le label
-        updateAffichage()
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -85,16 +84,18 @@ class ViewController: UIViewController, UIAlertViewDelegate {
         if segue.identifier == "afficheListe"{
             var TableVC = segue.destinationViewController as TableViewController
 //            TableVC.listeNotes = listeNotes
-            TableVC.listeMatieres = listeMatieres
+//            TableVC.listeMatieres = listeMatieres
             //println(TableVC.listeNotes)
             TableVC.viewC = self
         }
     }
     
     //Ajout de la note dans la liste de la classe
-    func ajoutNote(note:Int) {
+    func ajoutNote(note:Int,matiere:NSString) {
         //ajout de la note dans la liste
-        listeNotes.append(note)
+//        listeNotes.append(note)
+        listeNotes[matiere]?.append(note)
+        println(listeNotes)
         //calcul de la nouvelle moyenne
         calculMoyenne()
     }
@@ -106,13 +107,13 @@ class ViewController: UIViewController, UIAlertViewDelegate {
     
     //Calcul de la moyenne
     func calculMoyenne() {
-        moyenne = 0
-        for note in listeNotes {
-            moyenne = moyenne + note
-        }
-        if listeNotes.count > 0 {
-            moyenne = moyenne/listeNotes.count
-        }
+//        moyenne = 0
+//        for note in listeNotes {
+//            moyenne = moyenne + note
+//        }
+//        if listeNotes.count > 0 {
+//            moyenne = moyenne/listeNotes.count
+//        }
     }
     
     //Sauvegarde de la liste dans le NSUserDefault
