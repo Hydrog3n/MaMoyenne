@@ -23,6 +23,7 @@ class TableViewController: UITableViewController, UIAlertViewDelegate {
             let noteField = alert.textFields![0] as UITextField
             let matiereField = alert.textFields![1] as UITextField
             let note = (noteField.text as NSString).floatValue
+            if !noteField.text.isEmpty{
             if  (note >= 0 && note <= 20)  {
 //                self.listeNotes.append(note)
                 
@@ -30,6 +31,8 @@ class TableViewController: UITableViewController, UIAlertViewDelegate {
                 self.tableView.reloadData()
                 self.viewC.saveList("listeNotes")
             }
+            }
+            self.viewC.alertError("Erreur d'ajout", msg: "La note est vide")
         }
         alert.addAction(AddAction)
     
