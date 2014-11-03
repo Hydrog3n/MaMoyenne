@@ -64,6 +64,7 @@ class ViewController: UIViewController, UIAlertViewDelegate {
         }
         //Mise a jour de l'affichage du nb de note de la moyenne sur le label
         updateAffichage()
+        println(listeNotes)
     }
     
     override func viewWillAppear(animated: Bool) {

@@ -10,10 +10,9 @@ import UIKit
 
 class TableViewController: UITableViewController, UIAlertViewDelegate {
     
-    //var listeNotes:Array<Int> = []
-//    var listeMatieres:Array<NSString> = ["":[]]
+
     var viewC = ViewController ()
-    
+    var matiere:Array<NSString> = []
     @IBAction func ButtonAlert(sender: UIBarButtonItem) {
         // afficher les message sur l'alert
         let alert = UIAlertController(title: "Ajouter une nouvelle note", message:"", preferredStyle: UIAlertControllerStyle.Alert)
@@ -72,20 +71,23 @@ class TableViewController: UITableViewController, UIAlertViewDelegate {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        return self.viewC.nbNotes
+        matiere = Array(self.viewC.listeNotes.keys)
+        var notes:Array<Int> = self.viewC.listeNotes[matiere[section]]!
+        return notes.count
     }
 
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         var listeNotes = self.viewC.listeNotes
-        for matiere in listeNotes.keys {
-            return matiere
-        }
-        return "Error"
+        let matiere = Array(listeNotes.keys)
+        return  matiere[section]
     }
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let sectionName = "Math"
+        //let sectionName = "Math"
         let cell = tableView.dequeueReusableCellWithIdentifier("notes", forIndexPath: indexPath) as UITableViewCell
-        cell.textLabel.text = "\(self.viewC.listeNotes[sectionName])/20"
+        
+        var notes:Array<Int> = self.viewC.listeNotes[matiere[indexPath.section]]!
+        cell.textLabel.text = "\(notes[indexPath.row])/20"
+        
         return cell
     }
 
