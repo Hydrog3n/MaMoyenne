@@ -24,7 +24,7 @@ class ViewController: UIViewController, UIAlertViewDelegate {
     //Functions d'action depuis l'interface
     @IBAction func removeAllNote(sender: UIButton) {
         if( nbNotes != 0){
-        let alert = UIAlertController(title: "Attention", message:"Vos notes vont être supprimés", preferredStyle: UIAlertControllerStyle.Alert)
+        let alert = UIAlertController(title: "Attention", message:"Vos notes vont être supprimés", preferredStyle: UIAlertControllerStyle.ActionSheet)
     // bouton annuler
         alert.addAction(UIAlertAction(title: "Annuler", style: UIAlertActionStyle.Default, handler: nil))
         
@@ -149,8 +149,9 @@ class ViewController: UIViewController, UIAlertViewDelegate {
     
     //Generation d'une alerte pour signaler une erreur
     func alertError(title : String, msg : String){
-        var alert : UIAlertView = UIAlertView(title: title, message: msg, delegate: nil, cancelButtonTitle: "OK")
-        alert.show()
+        var alert : UIAlertController = UIAlertController(title: title, message: msg, preferredStyle: UIAlertControllerStyle.ActionSheet)
+        self.presentViewController(alert, animated: true, completion: nil)
+        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
     }
     
 }

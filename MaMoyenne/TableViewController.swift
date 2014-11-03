@@ -121,6 +121,8 @@ class TableViewController: UITableViewController, UIAlertViewDelegate {
             }
             self.viewC.saveList("listeNotes")
             tableView.reloadData()
+            self.viewC.calculMoyenne()
+            self.viewC.updateAffichage()
         }
     }
     /*
