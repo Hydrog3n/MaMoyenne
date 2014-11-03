@@ -12,9 +12,9 @@ class ViewController: UIViewController, UIAlertViewDelegate {
 
     //Variables de la classe
     let reglageUtilisateurs = NSUserDefaults.standardUserDefaults()
-    var moyenne = 0
-    var nbNotes = 0
-    var listeNotes = [NSString: Array<Int>]()
+    var moyenne:Float = 0
+    var nbNotes:Float = 0
+    var listeNotes = [NSString: Array<Float>]()
     
     //Variables du design
     @IBOutlet weak var noteField: UITextField!
@@ -40,26 +40,27 @@ class ViewController: UIViewController, UIAlertViewDelegate {
     }
     @IBAction func addNote(sender: UIButton) {
         //On debale l'optionnel si c'est un entier
-        if let note = noteField.text.toInt() {
-            //On verifie que la matiere ne soit pas vide
-            if !matiereField.text.isEmpty {
-                //On verifie que ce soit entre 0 et 20
-                if (note <= 20 && note >= 0){
-                    //Ajout de la note dans la liste, mise à jour de l'affichage et sauvegarde de la liste
-                    ajoutNote(note, matiere:matiereField.text)
-                    calculMoyenne()
-                    updateAffichage()
-                    saveList("listeNotes")
-                    //saveList("listeMatieres")
-                }
-                else {
-                    // afficher les message sur l'alert
-                    alertError("Votre note est Invalide !", msg: "Comprise entre 0 et 20")
-                }
+        //noteField.text.bridgeToObjectiveC().doubleValue
+        let note = (noteField.text as NSString).floatValue
+        
+        //On verifie que la matiere ne soit pas vide
+        if !matiereField.text.isEmpty {
+            //On verifie que ce soit entre 0 et 20
+            if (note <= 20 && note >= 0){
+                //Ajout de la note dans la liste, mise à jour de l'affichage et sauvegarde de la liste
+                ajoutNote(note, matiere:matiereField.text)
+                calculMoyenne()
+                updateAffichage()
+                saveList("listeNotes")
+                //saveList("listeMatieres")
             }
             else {
-                alertError("Erreur d'ajout", msg: "La matiere est vide ou ne convient pas")
+                // afficher les message sur l'alert
+                alertError("Votre note est Invalide !", msg: "Comprise entre 0 et 20")
             }
+        }
+        else {
+            alertError("Erreur d'ajout", msg: "La matiere est vide ou ne convient pas")
         }
         //Vidange des champs
         noteField.text = ""
@@ -70,7 +71,7 @@ class ViewController: UIViewController, UIAlertViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if var list = reglageUtilisateurs.valueForKey("listeNotes") as? Dictionary<NSString,Array<Int>> {
+        if var list = reglageUtilisateurs.valueForKey("listeNotes") as? Dictionary<NSString,Array<Float>> {
             listeNotes = list
             calculMoyenne()
         }
@@ -103,7 +104,7 @@ class ViewController: UIViewController, UIAlertViewDelegate {
     }
     
     //Ajout de la note dans la liste de la classe
-    func ajoutNote(note:Int,matiere:NSString) {
+    func ajoutNote(note:Float,matiere:NSString) {
         var matiere = matiere.lowercaseString
         matiere = matiere.capitalizedString
         //ajout de la note dans la liste
@@ -128,7 +129,7 @@ class ViewController: UIViewController, UIAlertViewDelegate {
         moyenne = 0
         nbNotes = 0
         for matiere in listeNotes.keys {
-            var notes = listeNotes[matiere]! as Array<Int>
+            var notes = listeNotes[matiere]! as Array<Float>
             for note in notes {
                 moyenne = moyenne + note
                 nbNotes++

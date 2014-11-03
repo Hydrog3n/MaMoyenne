@@ -22,8 +22,10 @@ class TableViewController: UITableViewController, UIAlertViewDelegate {
         let AddAction = UIAlertAction(title: "Ajouter", style: UIAlertActionStyle.Default) { (action) in
             let noteField = alert.textFields![0] as UITextField
             let matiereField = alert.textFields![1] as UITextField
-            if let note = noteField.text.toInt() {
+            let note = (noteField.text as NSString).floatValue
+            if  (note >= 0 && note <= 20)  {
 //                self.listeNotes.append(note)
+                
                 self.viewC.ajoutNote(note, matiere:matiereField.text)
                 self.tableView.reloadData()
                 self.viewC.saveList("listeNotes")
@@ -72,20 +74,34 @@ class TableViewController: UITableViewController, UIAlertViewDelegate {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
         matiere = Array(self.viewC.listeNotes.keys)
-        var notes:Array<Int> = self.viewC.listeNotes[matiere[section]]!
+        var notes:Array<Float> = self.viewC.listeNotes[matiere[section]]!
         return notes.count
     }
 
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        var listeNotes = self.viewC.listeNotes
+        let listeNotes = self.viewC.listeNotes
         let matiere = Array(listeNotes.keys)
         return  matiere[section]
     }
+
+    override func tableView(tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+        var listeNotes = self.viewC.listeNotes
+        let matiere = Array(listeNotes.keys)
+        var moyenne:Float = 0
+        
+        var notes:Array<Float> = self.viewC.listeNotes[matiere[section]]!
+        for note in notes {
+            moyenne = moyenne + note
+        }
+        moyenne = moyenne/self.viewC.nbNotes
+        return "Moyenne : \(moyenne)/20 - Nombre de note(s) : \(notes.count)"
+    }
+
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         //let sectionName = "Math"
         let cell = tableView.dequeueReusableCellWithIdentifier("notes", forIndexPath: indexPath) as UITableViewCell
         
-        var notes:Array<Int> = self.viewC.listeNotes[matiere[indexPath.section]]!
+        var notes:Array<Float> = self.viewC.listeNotes[matiere[indexPath.section]]!
         cell.textLabel.text = "\(notes[indexPath.row])/20"
         
         return cell
