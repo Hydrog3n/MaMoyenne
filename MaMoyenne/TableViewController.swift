@@ -90,7 +90,7 @@ class TableViewController: UITableViewController, UIAlertViewDelegate {
         
         return cell
     }
-    // boutton delete cell
+    
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         return true
     }
