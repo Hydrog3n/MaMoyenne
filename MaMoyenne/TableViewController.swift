@@ -95,7 +95,17 @@ class TableViewController: UITableViewController, UIAlertViewDelegate {
         return true
     }
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        
+        if editingStyle == UITableViewCellEditingStyle.Delete {
+            var matiere = Array(self.viewC.listeNotes.keys)
+            var listeNotes = self.viewC.listeNotes
+            self.viewC.listeNotes[matiere[indexPath.section]]!.removeAtIndex(indexPath.row)
+            tableView.deleteRowsAtIndexPaths([indexPath],withRowAnimation: UITableViewRowAnimation.Automatic)
+            if self.viewC.listeNotes[matiere[indexPath.section]]?.count == 0 {
+                self.viewC.listeNotes.removeValueForKey(matiere[indexPath.section])!
+            }
+            self.viewC.saveList("listeNotes")
+            tableView.reloadData()
+        }
     }
     /*
     // Override to support conditional editing of the table view.
