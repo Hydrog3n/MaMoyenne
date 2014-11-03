@@ -122,7 +122,7 @@ class ViewController: UIViewController, UIAlertViewDelegate {
     //Mise a jour de l'affichage dans le label
     func updateAffichage() {
         let moyenneString = NSString(format: "%.2f", moyenne)
-        infoMoyenne.text = "\(Int(nbNotes)) Note(s). \(moyenneString) de moyenne"
+        infoMoyenne.text = "\(Int(nbNotes)) Note\(pluriel(Int(nbNotes))). \(moyenneString) de moyenne"
     }
     
     //Calcul de la moyenne
@@ -152,6 +152,14 @@ class ViewController: UIViewController, UIAlertViewDelegate {
         var alert : UIAlertController = UIAlertController(title: title, message: msg, preferredStyle: UIAlertControllerStyle.ActionSheet)
         self.presentViewController(alert, animated: true, completion: nil)
         alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
+    }
+    
+    func pluriel(nb: Int) -> NSString {
+        var pluriel = ""
+        if nb > 1 {
+            pluriel = "s"
+        }
+        return pluriel
     }
     
 }

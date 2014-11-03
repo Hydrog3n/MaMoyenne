@@ -94,12 +94,7 @@ class TableViewController: UITableViewController, UIAlertViewDelegate {
         let listeNotes = self.viewC.listeNotes
         let matiere = Array(listeNotes.keys)
         var nbNotes = listeNotes[matiere[section]]!.count
-        var pluriel = ""
-        if nbNotes > 1 {
-            pluriel = "s"
-        } else {
-            pluriel = ""
-        }
+        var pluriel = self.viewC.pluriel(nbNotes)
         return  "\(matiere[section]) (\(nbNotes) Note\(pluriel))"
     }
     //    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
