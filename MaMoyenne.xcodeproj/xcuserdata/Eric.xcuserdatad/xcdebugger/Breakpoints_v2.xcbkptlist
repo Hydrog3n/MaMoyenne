@@ -10,12 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MaMoyenne/ViewController.swift"
-            timestampString = "435594536.33844"
+            timestampString = "436721006.446702"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "38"
-            endingLineNumber = "38"
-            landmarkName = "addNote(_:)"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
+            landmarkName = "removeAllNote(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
