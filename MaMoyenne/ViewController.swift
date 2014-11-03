@@ -23,7 +23,7 @@ class ViewController: UIViewController, UIAlertViewDelegate {
     
     //Functions d'action depuis l'interface
     @IBAction func removeAllNote(sender: UIButton) {
-
+        if( nbNotes != 0){
         let alert = UIAlertController(title: "Attention", message:"Vos notes vont être supprimés", preferredStyle: UIAlertControllerStyle.Alert)
     // bouton annuler
         alert.addAction(UIAlertAction(title: "Annuler", style: UIAlertActionStyle.Default, handler: nil))
@@ -36,6 +36,7 @@ class ViewController: UIViewController, UIAlertViewDelegate {
     }
         alert.addAction(AddAction)
         self.presentViewController(alert, animated: true, completion: nil)
+    }
     }
     @IBAction func addNote(sender: UIButton) {
         //On debale l'optionnel si c'est un entier
