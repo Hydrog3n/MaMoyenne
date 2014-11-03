@@ -28,8 +28,6 @@ class TableViewController: UITableViewController, UIAlertViewDelegate {
                 //on verifie si matierfield est vide
                 if !matiereField.text.isEmpty{
                     if  (note >= 0 && note <= 20)  {
-                        //                self.listeNotes.append(note)
-                        
                         self.viewC.ajoutNote(note, matiere:matiereField.text)
                         self.tableView.reloadData()
                         self.viewC.saveList("listeNotes")
@@ -49,6 +47,7 @@ class TableViewController: UITableViewController, UIAlertViewDelegate {
         alert.addTextFieldWithConfigurationHandler({(textField: UITextField!) in
             textField.placeholder = "Note"
             textField.secureTextEntry = false
+            textField.keyboardType = UIKeyboardType.DecimalPad
         })
         alert.addTextFieldWithConfigurationHandler({(textField: UITextField!) in
             textField.placeholder = "Matiere"
