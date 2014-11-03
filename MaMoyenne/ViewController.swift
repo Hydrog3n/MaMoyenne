@@ -54,6 +54,8 @@ class ViewController: UIViewController, UIAlertViewDelegate {
         //Vidange des champs
         noteField.text = ""
         noteField.resignFirstResponder()
+        matiereField.text = ""
+        matiereField.resignFirstResponder()
     }
     
     override func viewDidLoad() {
