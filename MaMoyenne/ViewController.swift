@@ -9,7 +9,7 @@
 import UIKit
 
 class ViewController: UIViewController, UIAlertViewDelegate {
-
+    
     //Variables de la classe
     let reglageUtilisateurs = NSUserDefaults.standardUserDefaults()
     var moyenne:Float = 0
@@ -24,19 +24,19 @@ class ViewController: UIViewController, UIAlertViewDelegate {
     //Functions d'action depuis l'interface
     @IBAction func removeAllNote(sender: UIButton) {
         if( nbNotes != 0){
-        let alert = UIAlertController(title: "Attention", message:"Vos notes vont être supprimés", preferredStyle: UIAlertControllerStyle.ActionSheet)
-    // bouton annuler
-        alert.addAction(UIAlertAction(title: "Annuler", style: UIAlertActionStyle.Default, handler: nil))
-        
-        let AddAction = UIAlertAction(title: "Supprimer", style: UIAlertActionStyle.Default) { (action) in
-        self.listeNotes.removeAll(keepCapacity: false)
-        self.saveList("listeNotes")
-        self.calculMoyenne()
-        self.updateAffichage()
-    }
-        alert.addAction(AddAction)
-        self.presentViewController(alert, animated: true, completion: nil)
-    }
+            let alert = UIAlertController(title: "Attention", message:"Vos notes vont être supprimés", preferredStyle: UIAlertControllerStyle.ActionSheet)
+            // bouton annuler
+            alert.addAction(UIAlertAction(title: "Annuler", style: UIAlertActionStyle.Default, handler: nil))
+            
+            let AddAction = UIAlertAction(title: "Supprimer", style: UIAlertActionStyle.Default) { (action) in
+                self.listeNotes.removeAll(keepCapacity: false)
+                self.saveList("listeNotes")
+                self.calculMoyenne()
+                self.updateAffichage()
+            }
+            alert.addAction(AddAction)
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
     }
     @IBAction func addNote(sender: UIButton) {
         //On debale l'optionnel si c'est un entier
@@ -96,8 +96,8 @@ class ViewController: UIViewController, UIAlertViewDelegate {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         if segue.identifier == "afficheListe"{
             var TableVC = segue.destinationViewController as TableViewController
-//            TableVC.listeNotes = listeNotes
-//            TableVC.listeMatieres = listeMatieres
+            //            TableVC.listeNotes = listeNotes
+            //            TableVC.listeMatieres = listeMatieres
             //println(TableVC.listeNotes)
             TableVC.viewC = self
         }
@@ -121,7 +121,8 @@ class ViewController: UIViewController, UIAlertViewDelegate {
     
     //Mise a jour de l'affichage dans le label
     func updateAffichage() {
-        infoMoyenne.text = "\(nbNotes) Note(s). \(moyenne) de moyenne"
+        let moyenneString = NSString(format: "%.2f", moyenne)
+        infoMoyenne.text = "\(Int(nbNotes)) Note(s). \(moyenneString) de moyenne"
     }
     
     //Calcul de la moyenne
@@ -134,7 +135,6 @@ class ViewController: UIViewController, UIAlertViewDelegate {
                 moyenne = moyenne + note
                 nbNotes++
             }
-            
         }
         if nbNotes > 0 {
             moyenne = moyenne/nbNotes
