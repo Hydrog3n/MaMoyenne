@@ -13,8 +13,8 @@ class ViewController: UIViewController, UIAlertViewDelegate {
     //Variables de la classe
     let reglageUtilisateurs = NSUserDefaults.standardUserDefaults()
     var moyenne = 0
-    var listeNotes:Array<Int> = []
-    var listeMatieres:Array<NSString> = ["Vide"]
+    var nbNotes = 0
+    var listeNotes = [NSString: Array<Int>]()
     
     //Variables du design
     @IBOutlet weak var noteField: UITextField!
@@ -23,10 +23,8 @@ class ViewController: UIViewController, UIAlertViewDelegate {
     
     //Functions d'action depuis l'interface
     @IBAction func removeAllNote(sender: UIButton) {
-        listeMatieres.removeAll(keepCapacity: false)
         listeNotes.removeAll(keepCapacity: false)
         saveList("listeNotes")
-        saveList("listeMatieres")
         calculMoyenne()
         updateAffichage()
     }
@@ -38,12 +36,11 @@ class ViewController: UIViewController, UIAlertViewDelegate {
                 //On verifie que ce soit entre 0 et 20
                 if (note <= 20 && note >= 0){
                     //Ajout de la note dans la liste, mise à jour de l'affichage et sauvegarde de la liste
-                    ajoutNote(note)
+                    ajoutNote(note, matiere:matiereField.text)
+                    calculMoyenne()
                     updateAffichage()
                     saveList("listeNotes")
-                    //Ajout de la matiere dans la liste et sauvegarde de la liste
-                    ajoutMatiere(matiereField.text)
-                    saveList("listeMatieres")
+                    //saveList("listeMatieres")
                 }
                 else {
                     // afficher les message sur l'alert
@@ -61,18 +58,20 @@ class ViewController: UIViewController, UIAlertViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if var list = reglageUtilisateurs.valueForKey("listeNotes") as? Dictionary<NSString,Array<Int>> {
+            listeNotes = list
+            calculMoyenne()
+        }
+        //Mise a jour de l'affichage du nb de note de la moyenne sur le label
+        updateAffichage()
+        println(listeNotes)
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         //Reccuptération de la liste de note dans la sauvegarde
         //Remplisage du tableau et mise à jour de la moyenne
-        if var list:Array<Int> = reglageUtilisateurs.valueForKey("listeNotes") as? Array<Int> {
-            listeNotes = list
-            calculMoyenne()
-        }
-        //Mise a jour de l'affichage du nb de note de la moyenne sur le label
-        updateAffichage()
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -85,33 +84,47 @@ class ViewController: UIViewController, UIAlertViewDelegate {
         if segue.identifier == "afficheListe"{
             var TableVC = segue.destinationViewController as TableViewController
 //            TableVC.listeNotes = listeNotes
-            TableVC.listeMatieres = listeMatieres
+//            TableVC.listeMatieres = listeMatieres
             //println(TableVC.listeNotes)
             TableVC.viewC = self
         }
     }
     
     //Ajout de la note dans la liste de la classe
-    func ajoutNote(note:Int) {
+    func ajoutNote(note:Int,matiere:NSString) {
+        var matiere = matiere.lowercaseString
+        matiere = matiere.capitalizedString
         //ajout de la note dans la liste
-        listeNotes.append(note)
+        if listeNotes[matiere] != nil {
+            listeNotes[matiere]!.append(note)
+        } else {
+            listeNotes[matiere] = [note]
+        }
+        
+        println(listeNotes)
         //calcul de la nouvelle moyenne
-        calculMoyenne()
+        //calculMoyenne()
     }
     
     //Mise a jour de l'affichage dans le label
     func updateAffichage() {
-        infoMoyenne.text = "\(listeNotes.count) Note(s). \(moyenne) de moyenne"
+        infoMoyenne.text = "\(nbNotes) Note(s). \(moyenne) de moyenne"
     }
     
     //Calcul de la moyenne
     func calculMoyenne() {
         moyenne = 0
-        for note in listeNotes {
-            moyenne = moyenne + note
+        nbNotes = 0
+        for matiere in listeNotes.keys {
+            var notes = listeNotes[matiere]! as Array<Int>
+            for note in notes {
+                moyenne = moyenne + note
+                nbNotes++
+            }
+            
         }
-        if listeNotes.count > 0 {
-            moyenne = moyenne/listeNotes.count
+        if nbNotes > 0 {
+            moyenne = moyenne/nbNotes
         }
     }
     
@@ -127,25 +140,5 @@ class ViewController: UIViewController, UIAlertViewDelegate {
         alert.show()
     }
     
-    //Ajout de matieres dans la liste
-    func ajoutMatiere(matiere: NSString) {
-        var matiere = matiere.lowercaseString
-        matiere = matiere.capitalizedString
-        let index:Int = listeNotes.count - 1
-        //        var find = false
-        //        var index = 0
-        //        for mat in listeMatieres {
-        //            if mat == matiere {
-        //                find = true
-        //                break;
-        //            }
-        //        }
-        //        if (find) {
-        //
-        //        }
-        
-        // listeMatieres.insert(matiere, atIndex:index)
-        listeMatieres.append(matiere)
-    }
 }
 
