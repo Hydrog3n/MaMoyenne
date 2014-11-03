@@ -13,8 +13,8 @@ class ViewController: UIViewController, UIAlertViewDelegate {
     //Variables de la classe
     let reglageUtilisateurs = NSUserDefaults.standardUserDefaults()
     var moyenne = 0
+    var nbNotes = 0
     var listeNotes = [NSString: Array<Int>]()
-    var listeMatieres:Array<NSString> = ["Vide"]
     
     //Variables du design
     @IBOutlet weak var noteField: UITextField!
@@ -23,10 +23,8 @@ class ViewController: UIViewController, UIAlertViewDelegate {
     
     //Functions d'action depuis l'interface
     @IBAction func removeAllNote(sender: UIButton) {
-        listeMatieres.removeAll(keepCapacity: false)
         listeNotes.removeAll(keepCapacity: false)
         saveList("listeNotes")
-        saveList("listeMatieres")
         calculMoyenne()
         updateAffichage()
     }
@@ -39,6 +37,7 @@ class ViewController: UIViewController, UIAlertViewDelegate {
                 if (note <= 20 && note >= 0){
                     //Ajout de la note dans la liste, mise à jour de l'affichage et sauvegarde de la liste
                     ajoutNote(note, matiere:matiereField.text)
+                    calculMoyenne()
                     updateAffichage()
                     saveList("listeNotes")
                     //saveList("listeMatieres")
@@ -92,28 +91,40 @@ class ViewController: UIViewController, UIAlertViewDelegate {
     
     //Ajout de la note dans la liste de la classe
     func ajoutNote(note:Int,matiere:NSString) {
+        var matiere = matiere.lowercaseString
+        matiere = matiere.capitalizedString
         //ajout de la note dans la liste
-//        listeNotes.append(note)
-        listeNotes[matiere]?.append(note)
+        if listeNotes[matiere] != nil {
+            listeNotes[matiere]!.append(note)
+        } else {
+            listeNotes[matiere] = [note]
+        }
+        
         println(listeNotes)
         //calcul de la nouvelle moyenne
-        calculMoyenne()
+        //calculMoyenne()
     }
     
     //Mise a jour de l'affichage dans le label
     func updateAffichage() {
-        infoMoyenne.text = "\(listeNotes.count) Note(s). \(moyenne) de moyenne"
+        infoMoyenne.text = "\(nbNotes) Note(s). \(moyenne) de moyenne"
     }
     
     //Calcul de la moyenne
     func calculMoyenne() {
-//        moyenne = 0
-//        for note in listeNotes {
-//            moyenne = moyenne + note
-//        }
-//        if listeNotes.count > 0 {
-//            moyenne = moyenne/listeNotes.count
-//        }
+        moyenne = 0
+        nbNotes = 0
+        for matiere in listeNotes.keys {
+            var notes = listeNotes[matiere]! as Array<Int>
+            for note in notes {
+                moyenne = moyenne + note
+                nbNotes++
+            }
+            
+        }
+        if nbNotes > 0 {
+            moyenne = moyenne/nbNotes
+        }
     }
     
     //Sauvegarde de la liste dans le NSUserDefault
@@ -128,25 +139,5 @@ class ViewController: UIViewController, UIAlertViewDelegate {
         alert.show()
     }
     
-    //Ajout de matieres dans la liste
-    func ajoutMatiere(matiere: NSString) {
-        var matiere = matiere.lowercaseString
-        matiere = matiere.capitalizedString
-        let index:Int = listeNotes.count - 1
-        //        var find = false
-        //        var index = 0
-        //        for mat in listeMatieres {
-        //            if mat == matiere {
-        //                find = true
-        //                break;
-        //            }
-        //        }
-        //        if (find) {
-        //
-        //        }
-        
-        // listeMatieres.insert(matiere, atIndex:index)
-        listeMatieres.append(matiere)
-    }
 }
 

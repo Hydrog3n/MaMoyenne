@@ -66,18 +66,21 @@ class TableViewController: UITableViewController, UIAlertViewDelegate {
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        var section = 0
-        return 1
+        return self.viewC.listeNotes.count
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        return self.viewC.listeNotes.count
+        return self.viewC.nbNotes
     }
 
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Section"
+        var listeNotes = self.viewC.listeNotes
+        for matiere in listeNotes.keys {
+            return matiere
+        }
+        return "Error"
     }
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let sectionName = "Math"
