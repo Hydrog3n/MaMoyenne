@@ -31,6 +31,8 @@ class TableViewController: UITableViewController, UIAlertViewDelegate {
                         self.viewC.ajoutNote(note, matiere:matiereField.text)
                         self.tableView.reloadData()
                         self.viewC.saveList("listeNotes")
+                        self.viewC.calculMoyenne()
+                        self.viewC.updateAffichage()
                     } else {
                         self.viewC.alertError("Erreur d'ajout", msg: "La note est comprise entre 0 et 20")
                     }
