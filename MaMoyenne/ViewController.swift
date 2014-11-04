@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UIAlertViewDelegate {
+class ViewController: UIViewController, UIAlertViewDelegate, UITextFieldDelegate {
     
     //Variables de la classe
     let reglageUtilisateurs = NSUserDefaults.standardUserDefaults()
@@ -20,6 +20,7 @@ class ViewController: UIViewController, UIAlertViewDelegate {
     @IBOutlet weak var noteField: UITextField!
     @IBOutlet weak var infoMoyenne: UILabel!
     @IBOutlet weak var matiereField: UITextField!
+    @IBOutlet weak var addButton: UIButton!
     
     //Functions d'action depuis l'interface
     @IBAction func removeAllNote(sender: UIButton) {
@@ -78,6 +79,8 @@ class ViewController: UIViewController, UIAlertViewDelegate {
         //Mise a jour de l'affichage du nb de note de la moyenne sur le label
         updateAffichage()
         println(listeNotes)
+        noteField.delegate = self
+        matiereField.delegate = self
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -154,6 +157,19 @@ class ViewController: UIViewController, UIAlertViewDelegate {
         alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
     }
     
+    //Baisser le clavier en defocus
+    func textFieldShouldEndEditing(text: UITextField) -> Bool {
+        text.resignFirstResponder()
+        return true
+    }
+    
+    //Envoie si appuie sur return
+    func textFieldShouldReturn(textField: UITextField!) -> Bool {
+        addNote(addButton)
+        return true
+    }
+
+    //Mettre au pluriel
     func pluriel(nb: Int) -> NSString {
         var pluriel = ""
         if nb > 1 {

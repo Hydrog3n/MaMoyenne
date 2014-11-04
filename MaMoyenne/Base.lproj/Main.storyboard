@@ -86,6 +86,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Ma moyenne" id="SoX-Nx-fbv"/>
                     <connections>
+                        <outlet property="addButton" destination="EXF-hN-Sl2" id="hdq-iW-r2e"/>
                         <outlet property="infoMoyenne" destination="a21-rn-Kr1" id="Anj-9N-H67"/>
                         <outlet property="matiereField" destination="p3Z-n1-HBK" id="R6b-pc-ROc"/>
                         <outlet property="noteField" destination="pfm-Jc-ezs" id="upq-22-CNc"/>
