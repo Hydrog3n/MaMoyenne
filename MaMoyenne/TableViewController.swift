@@ -118,7 +118,7 @@ class TableViewController: UITableViewController, UIAlertViewDelegate {
         let cell = tableView.dequeueReusableCellWithIdentifier("notes", forIndexPath: indexPath) as UITableViewCell
         
         var notes:Array<Float> = self.viewC.listeNotes[matiere[indexPath.section]]!
-        cell.textLabel.text = "\(notes[indexPath.row])/20"
+        cell.textLabel?.text = "\(notes[indexPath.row])/20"
         
         return cell
     }
