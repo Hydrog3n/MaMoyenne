@@ -42,10 +42,11 @@ class ViewController: UIViewController, UIAlertViewDelegate, UITextFieldDelegate
     @IBAction func addNote(sender: UIButton) {
         //On debale l'optionnel si c'est un entier
         //noteField.text.bridgeToObjectiveC().doubleValue
-        let note = (noteField.text as NSString).floatValue
+        
         
         //On verifie que la matiere ne soit pas vide
         if !matiereField.text.isEmpty {
+            let note = (noteField.text as NSString).floatValue
             //On verifie que ce soit entre 0 et 20
             if (note <= 20 && note >= 0){
                 //Ajout de la note dans la liste, mise à jour de l'affichage et sauvegarde de la liste
@@ -53,6 +54,8 @@ class ViewController: UIViewController, UIAlertViewDelegate, UITextFieldDelegate
                 calculMoyenne()
                 updateAffichage()
                 saveList("listeNotes")
+                noteField.text = ""
+                matiereField.text = ""
                 //saveList("listeMatieres")
             }
             else {
@@ -61,12 +64,13 @@ class ViewController: UIViewController, UIAlertViewDelegate, UITextFieldDelegate
             }
         }
         else {
+            
             alertError("Erreur d'ajout", msg: "La matiere est vide ou ne convient pas")
         }
         //Vidange des champs
-        noteField.text = ""
+        
         noteField.resignFirstResponder()
-        matiereField.text = ""
+        
         matiereField.resignFirstResponder()
     }
     

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="KLX-p6-lX6">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="KLX-p6-lX6">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -84,7 +84,11 @@
                             <constraint firstItem="a21-rn-Kr1" firstAttribute="centerX" secondItem="bFL-WJ-Gjm" secondAttribute="centerX" id="tLf-y9-80N"/>
                         </constraints>
                     </view>
+                    <toolbarItems>
+                        <barButtonItem title="Item" id="TFL-Ay-eKp"/>
+                    </toolbarItems>
                     <navigationItem key="navigationItem" title="Ma moyenne" id="SoX-Nx-fbv"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="addButton" destination="EXF-hN-Sl2" id="hdq-iW-r2e"/>
                         <outlet property="infoMoyenne" destination="a21-rn-Kr1" id="Anj-9N-H67"/>
@@ -94,7 +98,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YbH-t6-b4a" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-76" y="-236"/>
+            <point key="canvasLocation" x="44" y="-244"/>
         </scene>
         <!--Liste des Notes-->
         <scene sceneID="8q4-bT-m2K">
@@ -145,7 +149,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mt6-mT-66A" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-502" y="-268"/>
+            <point key="canvasLocation" x="-518" y="-250"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
